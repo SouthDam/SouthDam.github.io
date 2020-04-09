@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>刘柯东の日记</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-04-09T00:34:19.239Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>SouthDam</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开车了</title>
+    <link href="http://yoursite.com/2020/04/09/startup/"/>
+    <id>http://yoursite.com/2020/04/09/startup/</id>
+    <published>2020-04-08T23:45:58.000Z</published>
+    <updated>2020-04-09T00:34:19.239Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;新开这个博客，用来记录自己的学习历程和一些琐事遐想。&lt;br&gt;要好好加油💪&lt;/p&gt;
+
+        
+      
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="Personal" scheme="http://yoursite.com/tags/Personal/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2020/04/08/hello-world/"/>
+    <id>http://yoursite.com/2020/04/08/hello-world/</id>
+    <published>2020-04-08T21:42:11.793Z</published>
+    <updated>2020-04-09T00:34:10.483Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="Setting" scheme="http://yoursite.com/tags/Setting/"/>
+    
+  </entry>
+  
+</feed>
