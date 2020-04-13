@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Hello World |  刘柯东の日记
+    刷牛客网剑指offer 66题的一些想法（一） |  刘柯东の日记
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -37,7 +37,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-hello-world" class="article article-type-post" itemscope
+  <article id="post-JianZhiOffer-first-part" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -45,7 +45,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Hello World
+  刷牛客网剑指offer 66题的一些想法（一）
 </h1>
  
 
@@ -54,12 +54,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/08/hello-world/" class="article-date">
-  <time datetime="2020-04-08T21:42:11.793Z" itemprop="datePublished">2020-04-08</time>
+      <a href="/2020/04/11/JianZhiOffer-first-part/" class="article-date">
+  <time datetime="2020-04-11T20:15:32.000Z" itemprop="datePublished">2020-04-11</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
   </div>
 
       
@@ -69,7 +69,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">73</span>
+            <span class="post-count">1.1k</span>
         </span>
     </span>
 
@@ -78,7 +78,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -103,19 +103,28 @@
       
 
       
-      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+      <p>最近开始刷剑指offer和leetcode，几年前上C++的时候学的数据结构和算法忘得差不多了，需要复习一下。由于后面接触了不同的语言C++生疏了，加上现在主要使用python，因此刷题也主要用的python。</p>
+<h2 id="二维数组中的查找"><a href="#二维数组中的查找" class="headerlink" title="二维数组中的查找"></a>二维数组中的查找</h2><p>首先，判断是否空数组，即</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> len(array[<span class="number">0</span>]) == <span class="number">0</span>:</span><br><span class="line">    <span class="comment"># 判断等于要记得是两个等号啊，不然就变成赋值了，低级失误，吃过好多亏了</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>第一种解法，假如不给出限制条件，肯定不会出错的解法始终是最简单粗暴的数组遍历，时间复杂度O(mn)。但这种方法就利用不了数组有序这一特点。</p>
+<p>此外，此题的要求是输出是否有该数，而不要求输出该数的位置，因此也想到hash表（hash表查找效率是常数级的，O(1)，在python中用<code>set()</code>实现，会打乱原有数组的顺序，同时会去重）。但二维list是由不可hash的list构成，因此要对每一行进行hash，有了建立hash映射这个过程，不仅浪费空间，实际上速度也不快，因此舍弃。</p>
+<p>第二种解法，也是我一开始想到的解法。这道题给出的是有序的二维数组，看到有序数组第一反应就是对半查找，同时确定边界条件，即</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> target &lt; array[<span class="number">0</span>][<span class="number">0</span>] <span class="keyword">or</span> target &gt; array[<span class="number">-1</span>][<span class="number">-1</span>]: </span><br><span class="line">    <span class="comment"># -1代表倒数第一个，此处[-1][-1]指数组中最后一个数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>由于这道题给出的排列方法只能保证下一行对应位置的数比上一行大，并不是从起始位置递增到末尾的二维数组，因此只能逐行对半查找。先判断是否小于首数，是则直接返回<code>False</code>，其次判断是否大于末数（原本是否小于首数也在此判断，但仔细一想该项不应放于此处，由于该数组性质，小于某行首数则不可能在该行及其后行中再找到该数），是则直接进入下一行，反之进行对半查找，找到返回<code>True</code>，找不到则进入下一行，直到数组结束，返回<code>False</code>。时间复杂度O(mlogn)，代码如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Find</span><span class="params">(self, target, array)</span>:</span></span><br><span class="line">        </span><br><span class="line">        high_presave = len(array[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">if</span> high_presave == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span> <span class="comment"># 空数组的情况</span></span><br><span class="line">        <span class="keyword">if</span> target &lt; array[<span class="number">0</span>][<span class="number">0</span>] <span class="keyword">or</span> target &gt; array[<span class="number">-1</span>][<span class="number">-1</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(array)):</span><br><span class="line">            low = <span class="number">0</span></span><br><span class="line">            high = high_presave<span class="number">-1</span> <span class="comment"># 这两个变量用于之后的对半查找</span></span><br><span class="line">            <span class="keyword">if</span> target &lt; array[i][<span class="number">0</span>]:</span><br><span class="line">                <span class="keyword">break</span> <span class="comment"># 小于首数则可以直接退出返回false</span></span><br><span class="line">            <span class="keyword">if</span> target &gt; array[i][<span class="number">-1</span>]:</span><br><span class="line">                <span class="keyword">continue</span> <span class="comment"># 大于末数直接进入下一行查找</span></span><br><span class="line">            <span class="keyword">while</span> low&lt;=high:</span><br><span class="line">                pointer = int((low+high)/<span class="number">2</span>) </span><br><span class="line">                <span class="comment"># 由于python建立变量的时候不用声明int float等数据类型，转换也很随意，这里需要</span></span><br><span class="line">                <span class="comment"># 加上int固定变量类型，否则这个除法可能会把int变成float，下面访问数组时会出错</span></span><br><span class="line">                <span class="keyword">if</span> array[i][pointer]==target:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">                <span class="keyword">if</span> array[i][pointer]&gt;target:</span><br><span class="line">                    high = pointer<span class="number">-1</span></span><br><span class="line">                <span class="keyword">if</span> array[i][pointer]&lt;target:</span><br><span class="line">                    low = pointer+<span class="number">1</span></span><br><span class="line">                <span class="comment"># 加一和减一不会影响算法准确性，同时避免陷入死循环</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>第三种解法是目前我看到最直观而且能利用数组性质的解法，就像爬楼梯一样一步一步接近目标。首先还是边界条件，先判断是否越界。之后，从数组的左下角开始，如果当前数小于目标数，则向右，如果当前数大于目标数，则向上。也就是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> array[i][j] &gt; target:</span><br><span class="line">    i += <span class="number">-1</span></span><br><span class="line"><span class="keyword">if</span> array[i][j] &lt; target:</span><br><span class="line">    j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>如果找到该数，则返回<code>True</code>，否则返回<code>False</code>。该算法时间复杂度最差是O(m+n)，已经是效率很好的解法了。</p>
+<h2 id="替换空格"><a href="#替换空格" class="headerlink" title="替换空格"></a>替换空格</h2><p>把字符串中的空格替换成‘%20’。对python来说直接调用内置函数就完事了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">replaceSpace</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> s.replace（<span class="string">' '</span>,<span class="string">'%20'</span>)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>如果想把代码写复杂，也可以用正则表达式，不赘述。<br>也可以学C++之类的写法，找到空格，把空格后的内容往后移两位，空出来的三格填充为‘%20’，也不赘述。</p>
+<h2 id="从尾到头打印链表"><a href="#从尾到头打印链表" class="headerlink" title="从尾到头打印链表"></a>从尾到头打印链表</h2><p>这道题一开始只想到是考察链表和数组，但是后来发现还可以利用栈或者python队列完成。还有人用的递归，递归写起来比较直观简洁，但效率倒不见得尽如人意。</p>
+<p>先上我的第一种解法。</p>
+<p><strong><em>未完待续</em></strong></p>
 
       
       <!-- reward -->
@@ -180,14 +189,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/08/hello-world/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/11/JianZhiOffer-first-part/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Setting/" rel="tag">Setting</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%91%E6%8C%87offer/" rel="tag">剑指offer</a></li></ul>
 
 
     </footer>
@@ -198,15 +207,11 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/04/09/startup/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            开车了
-          
-        </div>
-      </a>
     
+      <a href="/2020/04/09/startup/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">开车了</div>
+      </a>
     
   </nav>
 
